@@ -1,11 +1,15 @@
 import sprite from "../assets/images/sprite.svg";
 
 function Actions() {
+
   return (
     <div className="actions-wrapper">
-        <svg width="50px" height="50px">
+      <div className="actions__add">
+        <svg className="add-btn-icon" width="50px" height="50px">
             <use href={`${sprite}#add-new`} />
         </svg>
+        <span className="add-btn-text">Add new album</span>
+      </div>
         <div className="input-actions">
           <svg width="20px" height="20px">
             <use href={`${sprite}#search`} />

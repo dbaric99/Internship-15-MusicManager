@@ -8,3 +8,35 @@
     display: flex;    
     align-items: center;
 }
+
+.actions__add {
+    display: flex;
+    align-items: center;
+}
+
+.add-btn-icon {
+    transition: all 0.3s; 
+    z-index: 1;
+}
+
+.add-btn-text {
+    margin-left: 10px;
+    color: var(--black);
+    transform: translate(-70px,0);
+    transition: all 0.5s;
+}
+
+.add-btn-icon:hover {
+    cursor: pointer;
+    transform: rotate(45deg);
+    transition: all 0.3s;
+}
+.add-btn-icon:hover + .add-btn-text {
+    transform: translate(0px, 0px);
+    color: var(--gray);
+    transition: all 0.5s;
+}
+
+.active {
+    transform: rotate(45deg);
+}
