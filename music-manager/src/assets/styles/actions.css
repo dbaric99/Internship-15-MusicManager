@@ -1,0 +1,10 @@
+.actions-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.input-actions {
+    display: flex;    
+    align-items: center;
+}
