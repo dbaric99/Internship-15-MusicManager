@@ -1,15 +1,19 @@
-import {Dialog, DialogTitle} from '@mui/material';
+import {Button, Modal, ModalTitle} from '@mui/material';
 import {PropTypes} from 'prop-types';
+import { useState } from 'react';
 
 function PopUp({handleClose}) {
 
   return (
-    <div>
-        <Dialog open={true} onClose={handleClose}>
-            <DialogTitle>Add new album</DialogTitle>
-        </Dialog>
-    </div>
-  )
+    <>
+      <Modal open={true} onClose={handleClose}>
+        <div>
+          <h2 id="simple-modal-title">Text in a modal</h2>
+          <p id="simple-modal-description">This is a test of modal.</p>
+        </div>
+      </Modal>
+    </>
+  );
 }
 
 export {PopUp}
