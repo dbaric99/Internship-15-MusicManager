@@ -37,6 +37,3 @@
     transition: all 0.5s;
 }
 
-.active {
-    transform: rotate(45deg);
-}
