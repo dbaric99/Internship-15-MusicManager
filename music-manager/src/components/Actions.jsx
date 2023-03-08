@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import sprite from "../assets/images/sprite.svg";
 import { PopUp } from '.';
+import { AlbumForm } from './forms';
 
 function Actions() {
   const [showPopOut, setShowPopOut] = useState(false);
@@ -28,7 +29,9 @@ function Actions() {
             <use href={`${sprite}#dropdown`} />
           </svg>
         </div>
-        {showPopOut && <PopUp handleClose={handleCloseModal}/>}
+        <PopUp title="Add new album" openPopUp={showPopOut} handleClose={setShowPopOut}>
+          <AlbumForm></AlbumForm>
+        </PopUp>
     </div>
   )
 }

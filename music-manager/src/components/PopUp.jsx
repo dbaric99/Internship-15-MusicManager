@@ -1,18 +1,22 @@
-import {Button, Modal, ModalTitle} from '@mui/material';
+import {Dialog, DialogContent, DialogTitle} from '@mui/material';
 import {PropTypes} from 'prop-types';
-import { useState } from 'react';
+import sprite from "../assets/images/sprite.svg";
 
-function PopUp({handleClose}) {
+function PopUp({openPopUp, handleClose, title, children, baseClass}) {
 
   return (
-    <>
-      <Modal open={true} onClose={handleClose}>
-        <div>
-          <h2 id="simple-modal-title">Text in a modal</h2>
-          <p id="simple-modal-description">This is a test of modal.</p>
-        </div>
-      </Modal>
-    </>
+    <Dialog className="pop-up" open={openPopUp}>
+      <DialogTitle className="pop-up__title-wrapper">
+        <h2 className="pop-up__title-text">{title}</h2>
+        <svg className="pop-up__close-icon" width="20px" height="20px" onClick={() => handleClose(false)}>
+            <use href={`${sprite}#close-button`} />
+        </svg>
+      </DialogTitle>
+
+      <DialogContent>
+        {children}
+      </DialogContent>
+    </Dialog>
   );
 }
 
@@ -20,4 +24,12 @@ export {PopUp}
 
 PopUp.propTypes = {
     handleClose: PropTypes.func.isRequired,
+    openPopUp: PropTypes.bool.isRequired,
+    title: PropTypes.string,
+    baseClass: PropTypes.string,
+}
+
+PopUp.defaultProps = {
+  title: "",
+  baseClass: ""
 }
