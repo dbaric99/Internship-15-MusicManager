@@ -28,6 +28,7 @@
     left: 9px;
     font-size: 15px;
     text-transform: capitalize;
+    background-color: var(--white);
 }
 
 .input-error {

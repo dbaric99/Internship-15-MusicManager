@@ -1,16 +1,24 @@
 import PropTypes from 'prop-types';
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
-function Input({label, name, value, onChange, showError, errorText}) {
-  var labelRef = useRef(null);
+function Input({label, value, onChange, showError, errorText}) {
+  const [inputValue, setInputValue] = useState(value); 
+  const labelRef = useRef(null);
 
   const handleInputChange = (e) => {
-    console.log("VAL: ", e);
+    setInputValue(e.target.value);
+    onChange();
   }
+
+  useEffect(() => {
+    if(!labelRef) return;
+    let current = labelRef.current;
+    if(inputValue) current.style.top = '-7px';
+  }, [inputValue])
 
   return (
     <div className='input-wrapper'>
-      <input className='input-field' type="text" required={showError} onChange={handleInputChange}/>
+      <input className='input-field' type="text" required={showError} onChange={handleInputChange} defaultValue={value}/>
       <label className='input-label' ref={labelRef}>{label}</label>
       {showError && (
         <span className='input-error'>{errorText}</span>
@@ -33,7 +41,7 @@ Input.propTypes = {
 Input.defaultProps = {
   label: "",
   name: "",
-  vallue: "",
+  value: null,
   onChange: () => {},
   showError: false,
   errorText: "",
