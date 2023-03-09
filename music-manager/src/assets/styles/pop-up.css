@@ -1,12 +1,18 @@
 .pop-up {
-    
+    position: absolute;
+    width: 60%;
+    height: 60%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--white);
+    z-index: 5;
+    border-radius: 10px;
+    box-shadow: 0 0 100vmax rgba(0, 0, 0, 1);
+    padding: 15px;
 }
 
-.pop-up__title-wrapper {
-
-}
-
-.pop-up__title-text {
+.pop-up__title {
     color: var(--black);
     margin: 20px;
     font-weight: normal;

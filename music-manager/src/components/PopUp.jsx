@@ -3,22 +3,14 @@ import sprite from "../assets/images/sprite.svg";
 
 function PopUp({openPopUp, handleClose, title, children}) {
 
-  return (
-    <div>
-      
+  return openPopUp && (
+    <div className='pop-up'>
+      <div className='pop-up__title'>{title}</div>
+      <svg className="pop-up__close-icon" width="20px" height="20px" onClick={() => handleClose(false)}>
+        <use href={`${sprite}#close-button`} />
+      </svg>
+      <div className='pop-up__content'>{children}</div>
     </div>
-    // <Dialog className="pop-up" open={openPopUp}>
-    //   <DialogTitle className="pop-up__title-wrapper">
-    //     <Typography>{title}</Typography>
-    //     <svg className="pop-up__close-icon" width="20px" height="20px" onClick={() => handleClose(false)}>
-    //         <use href={`${sprite}#close-button`} />
-    //     </svg>
-    //   </DialogTitle>
-
-    //   <DialogContent>
-    //     {children}
-    //   </DialogContent>
-    // </Dialog>
   );
 }
 
