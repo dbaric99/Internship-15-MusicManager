@@ -42,3 +42,11 @@
 .input-field--error {
     border-color: var(--red);
 }
+
+.dropzone-add {
+    cursor: pointer;
+    fill: red;
+}
+.dropzone-add:hover {
+    fill: red;
+}

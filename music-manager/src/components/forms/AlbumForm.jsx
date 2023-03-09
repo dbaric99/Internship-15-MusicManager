@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import {Input} from '../controls'
+import {Input, ImageInput} from '../controls'
 
 function AlbumForm() {
   const [showErrors, setShowErrors] = useState(false);
@@ -21,7 +21,8 @@ function AlbumForm() {
   return (
     <form onSubmit={handleSubmit} className="album-form">
 
-        <Input label="Name" onChange={handleNameChange} showError={true} errorText="Album Name is required!"/>
+        <ImageInput />
+        <Input label="Name" onChange={handleNameChange} showError={showErrors} errorText="Album Name is required!"/>
         <Input label="Author" onChange={handleAuthorChange} showError={showErrors} errorText="Album Author is required!"/>
 
     </form>
