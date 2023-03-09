@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useEffect, useRef, useState } from 'react';
 
-function Input({label, value, onChange, showError, errorText}) {
+function Input({label, name, value, onChange, showError, errorText}) {
   const [inputValue, setInputValue] = useState(value); 
   const [shouldDisplayError, setShouldDisplayError] = useState(showError);
   const labelRef = useRef(null);
@@ -31,9 +31,17 @@ function Input({label, value, onChange, showError, errorText}) {
 
   return (
     <div className='input-wrapper'>
-      <input className='input-field' type="text" required={showError} ref={inputRef} onChange={handleInputChange} defaultValue={value} onFocus={() => setShouldDisplayError(false)} onBlur={() => setShouldDisplayError(showError)}/>
+      <input 
+        ref={inputRef} 
+        className='input-field' 
+        type="text" 
+        required={showError} 
+        defaultValue={value} 
+        name={name}
+        onChange={handleInputChange} 
+        onFocus={() => setShouldDisplayError(false)} onBlur={() => setShouldDisplayError(showError)}/>
       <label className='input-label' ref={labelRef}>{label}</label>
-      {shouldDisplayError && (
+      {(shouldDisplayError && inputRef.current.value==="") && (
         <span className='input-error'>{errorText}</span>
       )}
     </div>

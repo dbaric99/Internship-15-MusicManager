@@ -22,8 +22,8 @@ function AlbumForm() {
     <form onSubmit={handleSubmit} className="album-form">
 
         <ImageInput />
-        <Input label="Name" onChange={handleNameChange} showError={showErrors} errorText="Album Name is required!"/>
-        <Input label="Author" onChange={handleAuthorChange} showError={showErrors} errorText="Album Author is required!"/>
+        <Input label="Name" name="Album name" onChange={handleNameChange} showError={showErrors} errorText="Album Name is required!"/>
+        <Input label="Author" name="Author name" onChange={handleAuthorChange} showError={showErrors} errorText="Album Author is required!"/>
 
     </form>
   )
