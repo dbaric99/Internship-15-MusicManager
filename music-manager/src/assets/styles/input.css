@@ -32,5 +32,13 @@
 }
 
 .input-error {
-
+    color: var(--red);
+    display: block;
+    font-size: 13px;
+    position: absolute;
+    left: 2px;
+    bottom: -17px;
+}
+.input-field--error {
+    border-color: var(--red);
 }

@@ -3,7 +3,9 @@ import { useEffect, useRef, useState } from 'react';
 
 function Input({label, value, onChange, showError, errorText}) {
   const [inputValue, setInputValue] = useState(value); 
+  const [shouldDisplayError, setShouldDisplayError] = useState(showError);
   const labelRef = useRef(null);
+  const inputRef = useRef(null);
 
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
@@ -16,11 +18,22 @@ function Input({label, value, onChange, showError, errorText}) {
     if(inputValue) current.style.top = '-7px';
   }, [inputValue])
 
+  useEffect(() => {
+    if(!inputRef) return;
+    let current = inputRef.current;
+    let activeClass = ' input-field--error';
+    if(shouldDisplayError) {
+      current.className += activeClass;
+      return;
+    }
+    current.className = current.className.replace(activeClass, '');
+  }, [shouldDisplayError])
+
   return (
     <div className='input-wrapper'>
-      <input className='input-field' type="text" required={showError} onChange={handleInputChange} defaultValue={value}/>
+      <input className='input-field' type="text" required={showError} ref={inputRef} onChange={handleInputChange} defaultValue={value} onFocus={() => setShouldDisplayError(false)} onBlur={() => setShouldDisplayError(showError)}/>
       <label className='input-label' ref={labelRef}>{label}</label>
-      {showError && (
+      {shouldDisplayError && (
         <span className='input-error'>{errorText}</span>
       )}
     </div>
