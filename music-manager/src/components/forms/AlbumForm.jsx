@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import {Input, ImageInput} from '../controls';
 import {errorConstants} from '../../constants';
+import defaultCover from '../../assets/images/no-cover.png';
 
 function AlbumForm() {
   const [showErrors, setShowErrors] = useState(false);
-
+  const [coverPath, setCoverPath] = useState(defaultCover);
 
   const handleSubmit = (e) => {
 
@@ -17,12 +18,16 @@ function AlbumForm() {
   const handleAuthorChange = (e) => {
 
   }
-  //label, name, value, onChange, error
+
+  const handleAlbumCoverChange = (path) => {
+    if(!path) return;
+    setCoverPath(path);
+  }
 
   return (
     <form onSubmit={handleSubmit} className="album-form">
 
-        <ImageInput />
+        <ImageInput handleFileUpload={handleAlbumCoverChange}/>
         <Input label="Name" name="Album name" onChange={handleNameChange} showError={showErrors} errorText={errorConstants.name}/>
         <Input label="Author" name="Author name" onChange={handleAuthorChange} showError={showErrors} errorText={errorConstants.author}/>
 

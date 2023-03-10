@@ -1,8 +1,8 @@
-import {useState, useEffect, useRef} from 'react';
+import {useState, useEffect} from 'react';
 import {useDropzone} from 'react-dropzone';
 import sprite from '../../assets/images/sprite.svg'
 
-function ImageInput() {
+function ImageInput({handleFileUpload}) {
     const [file, setFile] = useState([]);
     const [imageEl, setImageEl] = useState(null);
     const [isDropzoneFocused, setIsDropzoneFocused] = useState(false);
@@ -13,15 +13,24 @@ function ImageInput() {
         setFile(acceptedFiles.map(file => Object.assign(file, {
           preview: URL.createObjectURL(file)
         })));
-        console.log("DROPZONE:", acceptedFiles);
       }
     });
 
+    const handleImageError = () => {
+      handleFileUpload(null);
+    }
+
     useEffect(() => {
       if(!file.length) return;
-      console.log(file);
-      setImageEl(<img className="cover-preview" src={file[0].preview} alt="Cover art" style={{width:'70px', height: '70px'}}/>);
+      let imagePath = file[0].preview;
+
+      setImageEl(<img className="cover-preview" src={imagePath} alt="Cover art" style={{width:'70px', height: '70px'}} onError={handleImageError}/>);
     }, [file])
+
+    useEffect(() => {
+      if(!imageEl) return;
+      handleFileUpload(imageEl.props.src);
+    }, [imageEl])
   
     return (
       <>
