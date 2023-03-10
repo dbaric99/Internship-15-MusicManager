@@ -70,3 +70,11 @@
     border-color: var(--green);
     background-color: var(--semi-green);
 }
+
+.cover-preview {
+    border-radius: 8px;
+    object-fit: cover;
+}
+.cover-preview--hover {
+    filter: brightness(70%);
+}
