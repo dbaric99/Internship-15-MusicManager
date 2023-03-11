@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react';
 import {useDropzone} from 'react-dropzone';
-import sprite from '../../assets/images/sprite.svg'
+import {PropTypes} from 'prop-types';
+import sprite from '../../assets/images/sprite.svg';
 
 function ImageInput({handleFileUpload}) {
     const [file, setFile] = useState([]);
@@ -51,3 +52,11 @@ function ImageInput({handleFileUpload}) {
 }
 
 export {ImageInput}
+
+ImageInput.propTypes = {
+  handleFileUpload: PropTypes.func
+}
+
+ImageInput.defaultProps = {
+  handleFileUpload: () => {}
+}
