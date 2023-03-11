@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import {Input, ImageInput, Select} from '../controls';
+import {Input, ImageInput, CustomSelect} from '../controls';
 import {errorConstants, genreConstants} from '../../constants';
 import defaultCover from '../../assets/images/no-cover.png';
 
@@ -30,7 +30,7 @@ function AlbumForm() {
         <ImageInput handleFileUpload={handleAlbumCoverChange}/>
         <Input label="Name" name="Album name" onChange={handleNameChange} showError={showErrors} errorText={errorConstants.name}/>
         <Input label="Author" name="Author name" onChange={handleAuthorChange} showError={showErrors} errorText={errorConstants.author}/>
-        <Select options={genreConstants}/>
+        <CustomSelect options={genreConstants}/>
     </form>
   )
 }
