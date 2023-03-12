@@ -37,3 +37,7 @@
 .select--dark > * > .react-dropdown-select-item {
     background-color: var(--black) !important;
 }
+
+.select--dark > * > .react-dropdown-select-input {
+    color: var(--white);
+}

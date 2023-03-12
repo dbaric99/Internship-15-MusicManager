@@ -12,6 +12,10 @@ function CustomSelect({options, isClearable, isSearchable, className, placeholde
   }
 
   const handleSelectValueChange = (selectedValues) => {
+    if(selectedValues.length === 0) {
+      onChange('');
+      return;
+    }
     let selectedGenre = selectedValues[0].value;
     setSelectValue(selectedGenre);
     onChange(selectedGenre);
