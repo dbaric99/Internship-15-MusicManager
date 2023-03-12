@@ -23,3 +23,17 @@
     color: var(--black) !important;
     font-size: 15px !important;
 }
+
+.select--dark {
+    height: 39px;
+    font-size: 15px !important;
+    width: 170px !important;
+    border: 2px solid var(--gray) !important;
+    border-radius: 5px !important;
+    padding: 9px 5px;
+    color: var(--white);
+}
+
+.select--dark > * > .react-dropdown-select-item {
+    background-color: var(--black) !important;
+}

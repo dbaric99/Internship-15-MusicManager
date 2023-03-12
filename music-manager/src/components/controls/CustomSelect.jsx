@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Select from 'react-dropdown-select';
 import sprite from '../../assets/images/sprite.svg';
 
-function CustomSelect({options, isClearable, isSearchable, className, placeholder, showError, errorText, onChange}) {
+function CustomSelect({options, isClearable, isSearchable, className, placeholder, showError, errorText, onChange, icon}) {
   const [selectValue, setSelectValue] = useState(null);
   const [open, setOpen] = useState(false);
 
@@ -32,7 +32,7 @@ function CustomSelect({options, isClearable, isSearchable, className, placeholde
           onChange={handleSelectValueChange}
         />
         <svg className="select-indicator" width="30px" height="30px" onClick={handleIconClick}>
-          <use href={`${sprite}#dropdown--dark`} />
+          <use href={`${sprite}${icon}`} />
         </svg>
         {(showError && !selectValue) && (
         <span className='input-error'>{errorText}</span>
@@ -52,6 +52,7 @@ CustomSelect.propTypes = {
   showError: PropTypes.bool,
   errorText: PropTypes.string,
   onChange: PropTypes.func,
+  icon: PropTypes.string,
 }
 
 CustomSelect.defaultProps = {
@@ -62,5 +63,6 @@ CustomSelect.defaultProps = {
   placeholder: 'Select',
   showError: false,
   errorText: '',
-  onChange: () => {}
+  onChange: () => {},
+  icon: '#dropdown--dark',
 }

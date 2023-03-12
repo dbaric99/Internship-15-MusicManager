@@ -4,6 +4,8 @@ import {localStorageHelper} from '../helpers';
 
 function Dashboard() {
   const [albums, setAlbums] = useState(localStorageHelper.getFromLocalStorage('albums') || []);
+  const [filterValue, setFilterValue] = useState();
+  const [genreFilter, setGenreFilter] = useState();
 
   function appendNewAlbum(data) {
     setAlbums(prev => [...prev, data]);
@@ -14,7 +16,7 @@ function Dashboard() {
   }
 
   function sortAlbums(unsortedAlbums) {
-    return unsortedAlbums.slice().sort((a, b) => {
+    const sortedAlbums = unsortedAlbums.slice().sort((a, b) => {
       if (a.releaseYear !== b.releaseYear) {
         return a.releaseYear - b.releaseYear;
       }
@@ -23,17 +25,24 @@ function Dashboard() {
       }
       return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
     });
+
+    if(!genreFilter) return sortedAlbums;
+
+    return albums.filter(album => album.genre === genreFilter);
   }
 
   useEffect(() => {
     localStorageHelper.setToLocalStorage('albums', albums);
   }, [albums]);
   
+  useEffect(() => {
+    console.log("FILTER:",genreFilter)
+  }, [genreFilter])
 
   return (
     <div>
         <h1 className='dashboard-title'>Dashboard</h1>
-        <Actions addNewAlbum={appendNewAlbum} />
+        <Actions addNewAlbum={appendNewAlbum} handleGenreFilter={(value) => setGenreFilter(value)}/>
         <AlbumLibrary albums={sortAlbums(albums)} deleteAlbum={deleteAlbum}/>
     </div>
   )
