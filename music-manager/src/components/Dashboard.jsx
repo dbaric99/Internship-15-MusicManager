@@ -16,7 +16,7 @@ function Dashboard() {
   }
 
   function sortAlbums(unsortedAlbums) {
-    const sortedAlbums = unsortedAlbums.slice().sort((a, b) => {
+    let sortedAlbums = unsortedAlbums.slice().sort((a, b) => {
       if (a.releaseYear !== b.releaseYear) {
         return a.releaseYear - b.releaseYear;
       }
@@ -26,9 +26,18 @@ function Dashboard() {
       return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
     });
 
-    if(!genreFilter) return sortedAlbums;
+    if(genreFilter) {
+      sortedAlbums = albums.filter(album => album.genre === genreFilter);
+    }
 
-    return albums.filter(album => album.genre === genreFilter);
+    if(filterValue) {
+      sortedAlbums = albums.filter(album =>
+        (album.name.toLowerCase().includes(filterValue.toLowerCase()) ||
+          album.author.toLowerCase().includes(filterValue.toLowerCase()))
+      );
+    }
+
+    return sortedAlbums;
   }
 
   useEffect(() => {
@@ -42,7 +51,7 @@ function Dashboard() {
   return (
     <div>
         <h1 className='dashboard-title'>Dashboard</h1>
-        <Actions addNewAlbum={appendNewAlbum} handleGenreFilter={(value) => setGenreFilter(value)}/>
+        <Actions addNewAlbum={appendNewAlbum} handleGenreFilter={(value) => setGenreFilter(value)} handleFilterChange={(value) => setFilterValue(value)}/>
         <AlbumLibrary albums={sortAlbums(albums)} deleteAlbum={deleteAlbum}/>
     </div>
   )

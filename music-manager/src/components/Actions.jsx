@@ -3,10 +3,10 @@ import sprite from "../assets/images/sprite.svg";
 import { PopUp } from '.';
 import { AlbumForm } from './forms';
 import {PropTypes} from 'prop-types';
-import { CustomSelect } from './controls';
+import { CustomSelect, Input } from './controls';
 import { genreConstants } from '../constants';
 
-function Actions({addNewAlbum, handleGenreFilter}) {
+function Actions({addNewAlbum, handleGenreFilter, handleFilterChange}) {
   const [showPopOut, setShowPopOut] = useState(false);
 
   const handleCloseModal = () => {
@@ -25,6 +25,7 @@ function Actions({addNewAlbum, handleGenreFilter}) {
           <svg className="actions__search" width="20px" height="20px">
             <use href={`${sprite}#search`} />
           </svg>
+          <Input onChange={handleFilterChange}/>
           <CustomSelect options={genreConstants} icon='#dropdown--light' placeholder='Genre' onChange={handleGenreFilter} className='select--dark' isSearchable={true}/>
         </div>
         <PopUp title="Add new album" openPopUp={showPopOut} handleClose={setShowPopOut}>
