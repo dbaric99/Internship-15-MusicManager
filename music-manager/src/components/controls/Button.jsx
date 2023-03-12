@@ -2,9 +2,7 @@ import {PropTypes} from 'prop-types';
 
 function Button({type, classes, text, handleClick}) {
   return (
-    <div>
-      <button className={classes} type={type} onClick={handleClick}>{text}</button>
-    </div>
+    <button className={classes} type={type} onClick={handleClick}>{text}</button>
   )
 }
 

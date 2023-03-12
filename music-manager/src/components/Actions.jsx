@@ -26,9 +26,6 @@ function Actions({addNewAlbum}) {
           <svg className="actions__genre" width="30px" height="30px">
             <use href={`${sprite}#dropdown--light`} />
           </svg>
-          <svg className="actions__sort" width="30px" height="30px">
-            <use href={`${sprite}#dropdown--light`} />
-          </svg>
         </div>
         <PopUp title="Add new album" openPopUp={showPopOut} handleClose={setShowPopOut}>
           <AlbumForm handleData={(data) => addNewAlbum(data)} handleClose={handleCloseModal}></AlbumForm>
