@@ -1,0 +1,25 @@
+.select--light {
+    height: 39px;
+    font-size: 15px !important;
+    width: 170px !important;
+    border: 2px solid var(--gray) !important;
+    border-radius: 5px !important;
+    padding: 9px 5px;
+    color: var(--black);
+}
+
+.select-wrapper {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.select-indicator {
+    position: absolute;
+    top: 4px;
+    left: 140px;
+}
+
+.react-dropdown-select-no-data {
+    color: var(--black) !important;
+    font-size: 15px !important;
+}
