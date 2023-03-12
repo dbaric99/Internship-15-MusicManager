@@ -10,6 +10,10 @@ function Actions() {
     setShowPopOut(false);
   }
 
+  function getNewAlbumData(data) {
+    console.log("NEW ALBUM:", data);
+  }
+
   return (
     <div className="actions-wrapper">
       <div className="actions__add">
@@ -30,7 +34,7 @@ function Actions() {
           </svg>
         </div>
         <PopUp title="Add new album" openPopUp={showPopOut} handleClose={setShowPopOut}>
-          <AlbumForm></AlbumForm>
+          <AlbumForm handleData={getNewAlbumData} handleClose={handleCloseModal}></AlbumForm>
         </PopUp>
     </div>
   )

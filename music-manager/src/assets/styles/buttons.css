@@ -1,0 +1,11 @@
+.btn--submit {
+    color: var(--white);
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: var(--green);
+    border: none;
+    width: 120px;
+    height: 35px;
+    border-radius: 10px;
+    cursor: pointer;
+}

@@ -1,4 +1,5 @@
 import {PropTypes} from 'prop-types';
+import React from 'react';
 import sprite from "../assets/images/sprite.svg";
 
 function PopUp({openPopUp, handleClose, title, children}) {

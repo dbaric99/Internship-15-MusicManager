@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Select from 'react-dropdown-select';
 import sprite from '../../assets/images/sprite.svg';
 
-function CustomSelect({options, isClearable, isSearchable, className, placeholder, showError, errorText}) {
+function CustomSelect({options, isClearable, isSearchable, className, placeholder, showError, errorText, onChange}) {
   const [selectValue, setSelectValue] = useState(null);
   const [open, setOpen] = useState(false);
 
@@ -12,7 +12,9 @@ function CustomSelect({options, isClearable, isSearchable, className, placeholde
   }
 
   const handleSelectValueChange = (selectedValues) => {
-    setSelectValue(selectedValues[0].value);
+    let selectedGenre = selectedValues[0].value;
+    setSelectValue(selectedGenre);
+    onChange(selectedGenre);
   }
 
   return (
@@ -49,6 +51,7 @@ CustomSelect.propTypes = {
   placeholder: PropTypes.string,
   showError: PropTypes.bool,
   errorText: PropTypes.string,
+  onChange: PropTypes.func,
 }
 
 CustomSelect.defaultProps = {
@@ -58,5 +61,6 @@ CustomSelect.defaultProps = {
   className: '',
   placeholder: 'Select',
   showError: false,
-  errorText: ''
+  errorText: '',
+  onChange: () => {}
 }
