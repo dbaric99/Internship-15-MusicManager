@@ -29,9 +29,36 @@ function ImageInput({handleFileUpload}) {
     }, [file])
 
     useEffect(() => {
-      if(!imageEl) return;
-      handleFileUpload(imageEl.props.src);
-    }, [imageEl])
+      if (!imageEl) return;
+      
+      const src = imageEl.props.src;
+      
+      if (typeof src === 'string') {
+        // Convert URL to Blob
+        fetch(src)
+          .then((res) => res.blob())
+          .then((blob) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(blob);
+    
+            reader.onload = () => {
+              handleFileUpload(reader.result);
+            };
+          })
+          .catch((error) => {
+            console.error('Error converting URL to Blob:', error);
+          });
+      } else if (src instanceof Blob) {
+        // Use the Blob directly
+        const reader = new FileReader();
+        reader.readAsDataURL(src);
+    
+        reader.onload = () => {
+          handleFileUpload(reader.result);
+        };
+      }
+    }, [imageEl]);
+    
   
     return (
       <>
