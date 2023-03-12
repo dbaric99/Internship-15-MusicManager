@@ -8,6 +8,10 @@ function Dashboard() {
   const [genreFilter, setGenreFilter] = useState();
 
   function appendNewAlbum(data) {
+    if(albums.length === 3) {
+      alert("You cannot have more than 10 albums in your library at once!");
+      return;
+    }
     setAlbums(prev => [...prev, data]);
   }
 
