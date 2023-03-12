@@ -1,12 +1,17 @@
 import { useEffect, useState } from 'react';
 import {Actions, AlbumLibrary} from '.';
+import {localStorageHelper} from '../helpers';
 
 function Dashboard() {
-  const [albums, setAlbums] = useState([]);
+  const [albums, setAlbums] = useState(localStorageHelper.getFromLocalStorage('albums') || []);
 
   function appendNewAlbum(data) {
     setAlbums(prev => [...prev, data]);
   }
+
+  useEffect(() => {
+    localStorageHelper.setToLocalStorage('albums', albums);
+  }, [albums])
 
   return (
     <div>

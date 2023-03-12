@@ -66,7 +66,7 @@ function AlbumForm({handleClose, handleData}) {
         </div>
         <div className='album-form__select'>
           <CustomSelect options={genreConstants} className='select--light' placeholder='Select Genre...' showError={showErrors} errorText={errorConstants.genre} onChange={handleGenreChange}/>
-          <CustomSelect options={yearConstants} isSearchable={true}className='select--light' placeholder='Select Release Year...' showError={showErrors} errorText={errorConstants.releaseYear} onChange={handleReleaseYearChange}/>
+          <CustomSelect options={yearConstants} isSearchable={true} className='select--light' placeholder='Select Release Year...' showError={showErrors} errorText={errorConstants.releaseYear} onChange={handleReleaseYearChange}/>
         </div>
         <div className='album-form__submit'>
           <Button type="submit" text="Add album" classes='btn--submit' />

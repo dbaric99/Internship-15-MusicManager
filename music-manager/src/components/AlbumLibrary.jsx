@@ -3,8 +3,8 @@ import {PropTypes} from 'prop-types';
 
 function AlbumLibrary({albums}) {
   return (
-    <div>
-        {albums.map(album => <Album data={album}/>)}
+    <div className='albums-holder'>
+        {albums.map(album => <Album data={album} key={album.id}/>)}
     </div>
   )
 }

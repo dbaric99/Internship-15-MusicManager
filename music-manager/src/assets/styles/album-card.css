@@ -1,0 +1,37 @@
+.albums-holder {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.album-wrapper {
+    display: flex;
+    position: relative;
+    align-items: center;
+    flex-direction: column;
+    width: 200px;
+    margin: 10px;
+    background-color: var(--white);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.album-cover {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 10px;
+}
+
+.album-name {
+    font-size: 20px;
+    color: var(--black);
+}
+
+.album-author {
+    font-size: 15px;
+    color: var(--gray);
+}
+
+.album-release {
+    font-size: 12px;
+    color: var(--gray);
+}
