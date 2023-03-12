@@ -43,10 +43,6 @@ function Dashboard() {
   useEffect(() => {
     localStorageHelper.setToLocalStorage('albums', albums);
   }, [albums]);
-  
-  useEffect(() => {
-    console.log("FILTER:",genreFilter)
-  }, [genreFilter])
 
   return (
     <div>

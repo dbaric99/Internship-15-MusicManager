@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useEffect, useRef, useState } from 'react';
 
-function Input({label, name, value, onChange, showError, errorText}) {
+function Input({label, name, value, onChange, showError, errorText, darkTheme}) {
   const [inputValue, setInputValue] = useState(value); 
   const labelRef = useRef(null);
   const inputRef = useRef(null);
@@ -32,7 +32,7 @@ function Input({label, name, value, onChange, showError, errorText}) {
     <div className='input-wrapper'>
       <input 
         ref={inputRef} 
-        className='input-field' 
+        className={darkTheme ? 'input-field--dark' : 'input-field'}
         type="text"  
         defaultValue={value} 
         name={name}
@@ -55,6 +55,7 @@ Input.propTypes = {
   onChange: PropTypes.func,
   showError: PropTypes.bool,
   errorText: PropTypes.string,
+  darkTheme: PropTypes.bool
 }
 
 Input.defaultProps = {
@@ -64,4 +65,5 @@ Input.defaultProps = {
   onChange: () => {},
   showError: false,
   errorText: "",
+  darkTheme: false
 }

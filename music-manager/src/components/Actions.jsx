@@ -25,7 +25,7 @@ function Actions({addNewAlbum, handleGenreFilter, handleFilterChange}) {
           <svg className="actions__search" width="20px" height="20px">
             <use href={`${sprite}#search`} />
           </svg>
-          <Input onChange={handleFilterChange}/>
+          <Input onChange={handleFilterChange} darkTheme={true}/>
           <CustomSelect options={genreConstants} icon='#dropdown--light' placeholder='Genre' onChange={handleGenreFilter} className='select--dark' isSearchable={true}/>
         </div>
         <PopUp title="Add new album" openPopUp={showPopOut} handleClose={setShowPopOut}>

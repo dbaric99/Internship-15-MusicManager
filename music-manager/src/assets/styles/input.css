@@ -3,14 +3,14 @@
     margin-bottom: 20px;
 }
 
-.input-field {
+.input-field,
+.input-field--dark {
     padding: 9px 5px;
     border: 2px solid var(--gray);
     outline: none;
     border-radius: 5px;
     font-size: 15px;
 }
-
 .input-field:focus {
     border-color: var(--green);
 }
@@ -18,6 +18,12 @@
     top: -7px;
     transition: top .3s ease-in-out;
     background-color: var(--white);
+}
+
+.input-field--dark {
+    background-color: var(--black);
+    color: var(--white);
+    margin-right: 20px;
 }
 
 .input-label {
@@ -77,4 +83,11 @@
 }
 .cover-preview--hover {
     filter: brightness(70%);
+}
+
+.actions__search {
+    position: absolute;
+    z-index: 1;
+    bottom: 50%;
+    right: 200px;
 }
