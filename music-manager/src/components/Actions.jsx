@@ -2,16 +2,13 @@ import {useState} from 'react';
 import sprite from "../assets/images/sprite.svg";
 import { PopUp } from '.';
 import { AlbumForm } from './forms';
+import {PropTypes} from 'prop-types';
 
-function Actions() {
+function Actions({addNewAlbum}) {
   const [showPopOut, setShowPopOut] = useState(false);
 
   const handleCloseModal = () => {
     setShowPopOut(false);
-  }
-
-  function getNewAlbumData(data) {
-    console.log("NEW ALBUM:", data);
   }
 
   return (
@@ -34,10 +31,18 @@ function Actions() {
           </svg>
         </div>
         <PopUp title="Add new album" openPopUp={showPopOut} handleClose={setShowPopOut}>
-          <AlbumForm handleData={getNewAlbumData} handleClose={handleCloseModal}></AlbumForm>
+          <AlbumForm handleData={(data) => addNewAlbum(data)} handleClose={handleCloseModal}></AlbumForm>
         </PopUp>
     </div>
   )
 }
 
 export {Actions}
+
+Actions.propTypes = {
+  addNewAlbum: PropTypes.func
+}
+
+Actions.defeaultProps = {
+  addNewAlbum: () => {}
+}

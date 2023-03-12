@@ -1,6 +1,9 @@
+import {PropTypes} from 'prop-types';
 
+function Album({data}) {
 
-function Album() {
+  console.log("ALBUM COMPONENT:",data);
+
   return (
     <div>
         Album
@@ -9,3 +12,11 @@ function Album() {
 }
 
 export {Album}
+
+Album.propTypes = {
+  data: PropTypes.object
+}
+
+Album.defaultProps = {
+  data: {}
+}
